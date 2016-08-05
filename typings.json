@@ -1,0 +1,7 @@
+{
+  "globalDependencies": {
+    "bluebird": "registry:dt/bluebird#2.0.0+20160701023356",
+    "fs-extra": "registry:dt/fs-extra#0.0.0+20160517121359",
+    "node": "registry:dt/node#6.0.0+20160802155038"
+  }
+}

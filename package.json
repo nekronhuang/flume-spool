@@ -1,0 +1,33 @@
+{
+  "name": "flume-spool",
+  "version": "0.0.1",
+  "description": "the Spooling Directory Source with Flume, written in node",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nekronhuang/flume-spool.git"
+  },
+  "keywords": [
+    "flume",
+    "log",
+    "spoolsource",
+    "node"
+  ],
+  "author": "Yiting Huang <nekron.hyt@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/nekronhuang/flume-spool/issues"
+  },
+  "homepage": "https://github.com/nekronhuang/flume-spool#readme",
+  "engines": {
+    "node": ">= 6.0.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "debug": "^2.2.0",
+    "fs-extra": "^0.30.0"
+  }
+}
