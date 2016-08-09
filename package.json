@@ -4,7 +4,9 @@
   "description": "support flume spooling directory source for node",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/test.js"
+    "test": "mocha test/test.js",
+    "test-cov": "istanbul cover _mocha test/test.js",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.12",
+    "istanbul": "^0.4.4",
     "mocha": "^3.0.2"
   }
 }

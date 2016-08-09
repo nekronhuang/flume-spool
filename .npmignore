@@ -1,6 +1,8 @@
 examples/
 test/
 .travis.yml
+.git
+npm-debug.log
 
 jsconfig.json
 typings.json
