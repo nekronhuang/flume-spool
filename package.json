@@ -1,7 +1,7 @@
 {
   "name": "flume-spool",
   "version": "0.1.0",
-  "description": "the Spooling Directory Source with Flume, written in node",
+  "description": "support flume spooling directory source for node",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/test.js"
