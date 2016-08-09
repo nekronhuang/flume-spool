@@ -67,7 +67,7 @@ describe('FlumeSpool', function () {
     })
 
     it('emit a transfer event when the temporary file is transfered', function (done) {
-      this.timeout(5000)
+      this.timeout(2000)
       let oldPath
       log = new FlumeSpool(SPOOL_DIR, {
         interval: 100,
@@ -102,6 +102,35 @@ describe('FlumeSpool', function () {
         fs.stat(newPath, (err) => {
           assert.isNull(err)
           done()
+        })
+      })
+    })
+
+    it('should remove the file when `autoDelete` is set', function (done) {
+      this.timeout(2000)
+      let filename
+      log = new FlumeSpool(SPOOL_DIR, {
+        interval: 100,
+        autoDelete: true,
+        autoDeleteInterval: 300,
+        autoDeleteSuffixReg: /\.log$/,
+      })
+      log.on('open', () => {
+        filename = path.basename(log.stream.path)
+        log.write('test')
+      })
+      log.on('transfer', () => {
+        const newPath = path.resolve(SPOOL_DIR, filename)
+        log._closeStream()
+        clearInterval(log.loop)
+        fs.stat(newPath, (err) => {
+          assert.isNull(err)
+          setTimeout(() => {
+            fs.stat(newPath, (err) => {
+              assert.instanceOf(err, Error)
+              done()
+            })
+          }, 500)
         })
       })
     })
