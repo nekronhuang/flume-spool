@@ -1,5 +1,6 @@
 examples/
 test/
+.travis.yml
 
 jsconfig.json
 typings.json
