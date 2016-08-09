@@ -1,0 +1,5 @@
+examples/
+test/
+
+jsconfig.json
+typings.json
