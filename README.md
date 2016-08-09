@@ -1,5 +1,7 @@
 # flume-spool
 
+[![Build Status](https://travis-ci.org/nekronhuang/flume-spool.svg?branch=master)](https://travis-ci.org/nekronhuang/flume-spool) [![Coverage Status](https://coveralls.io/repos/github/nekronhuang/flume-spool/badge.svg?branch=master)](https://coveralls.io/github/nekronhuang/flume-spool?branch=master)
+
 The repository is to support flume spooling directory source for node.
 
 **Note:** only support Node > 4.0.0 and Apache Flume > 1.3.0
@@ -29,7 +31,7 @@ Name                 | Type    | Default         | Description
 `tempDir`             | string  | ./flume_temp    | The directory for temporary logs.
 `autoDelete`          | boolean | false           | Remove completed files using node.
 `autoDeleteInterval`  | number  | 600000(10min)   | ---
-`autoDeleteSuffixReg` | regexp  |  /\.COMPLETED$/ | ---
+`autoDeleteSuffixReg` | regexp  | /\.COMPLETED$/  | ---
 `streamEncoding`      | string  | utf8            | The config for the log stream.
 `streamMode`          | number  | 0644            | ---
 `streamFlags`         | string  | a               | ---
