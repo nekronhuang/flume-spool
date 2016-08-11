@@ -2,6 +2,7 @@ examples/
 test/
 .travis.yml
 .git
+coverage/
 npm-debug.log
 
 jsconfig.json

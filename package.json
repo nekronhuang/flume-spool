@@ -1,6 +1,6 @@
 {
   "name": "flume-spool",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "support flume spooling directory source for node",
   "main": "index.js",
   "scripts": {
