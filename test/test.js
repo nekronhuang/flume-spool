@@ -26,6 +26,7 @@ describe('FlumeSpool', function () {
       log.close()
       log = null
     }
+    fs.emptyDirSync(TEMP_DIR)
   })
 
   describe('Parameters', function () {
@@ -140,12 +141,39 @@ describe('FlumeSpool', function () {
       log.on('close', () => {
         log.write('content')
       })
-      log.on('error', (err) => {
+      log.once('error', (err) => {
         assert.instanceOf(err, Error)
         done()
       })
       log.close()
       log = null
+    })
+
+    it('emit an error event when the transfer func throw an error', function (done) {
+      const readdirCache = fs.readdirAsync
+      fs.readdirAsync = null
+      log = new FlumeSpool(SPOOL_DIR, {
+        interval: 200,
+      })
+      log.once('error', (err) => {
+        assert.instanceOf(err, Error)
+        fs.readdirAsync = readdirCache
+        done()
+      })
+    })
+
+    it('emit an error event when the unlink func throw an error', function (done) {
+      const TEST_ERR = 'Test Error'
+      log = new FlumeSpool(SPOOL_DIR, {
+        interval: 200,
+      })
+      log.on('open', () => {
+        fs.unlinkAsync = () => Promise.reject(new Error(TEST_ERR))
+      })
+      log.once('error', (err) => {
+        assert.include(err.message, TEST_ERR)
+        done()
+      })
     })
 
     it('emit a close event when being closed', function (done) {
